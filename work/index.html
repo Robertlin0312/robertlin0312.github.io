@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ROUBERT</title>
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body data-root="../">
+<nav class="top">
+  <a href="../">Roubert</a>
+  <a href="../">Works</a>
+  <a href="../roubert-tools/">Tools</a>
+  <a href="../#info">Info</a>
+</nav>
+<header class="work-head"></header>
+<main class="shots"></main>
+<a class="back u" href="../">← All works</a>
+<footer><span>© Roubert</span><span>Taiwan</span></footer>
+<script src="../assets/works.js"></script>
+<script>
+/* 作品內頁：依網址 ?w=代號 從 works.js 找出作品內容 */
+(function(){
+  var ROOT='../', slug=new URLSearchParams(location.search).get('w');
+  var w=WORKS.filter(function(x){return x.slug===slug})[0];
+  function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(m){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]})}
+  var head=document.querySelector('.work-head'), shots=document.querySelector('.shots');
+  if(!w){head.innerHTML='<h1>找不到這件作品<small>Work not found</small></h1>';return}
+  document.title=w.title+(w.en?' '+w.en:'')+' — ROUBERT';
+  var meta=[['Year',w.year],['Type',w.type],['Client',w.client],['Role',w.role]].filter(function(m){return m[1]});
+  head.innerHTML='<h1>'+esc(w.title)+'<small>'+esc(w.en||'')+'</small></h1>'+
+    '<dl>'+meta.map(function(m){return '<dt>'+m[0]+'</dt><dd>'+esc(m[1])+'</dd>'}).join('')+'</dl>'+
+    '<div class="text">'+(w.text||[]).map(function(t){return '<p>'+esc(t)+'</p>'}).join('')+'</div>';
+  var imgs=(w.images&&w.images.length)?w.images:[{src:w.cover}];
+  shots.innerHTML=imgs.map(function(im){
+    var st=(im.c?'--c:'+im.c+';':'')+(im.s?'--s:'+im.s:'');
+    var body=im.video?'<iframe src="'+esc(im.video)+'" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>'
+                     :'<img src="'+esc(ROOT+im.src)+'" alt="'+esc(im.caption||w.title)+'" loading="lazy">';
+    return '<figure style="'+st+'">'+body+(im.caption?'<figcaption>'+esc(im.caption)+'</figcaption>':'')+'</figure>';
+  }).join('');
+})();
+</script>
+</body>
+</html>

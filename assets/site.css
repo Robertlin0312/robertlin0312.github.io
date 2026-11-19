@@ -1,0 +1,73 @@
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--ink:#111;--mute:#9a9a9a;--pad:2.4vw;--gap:1.6vw}
+html{background:#fff}
+body{color:var(--ink);font-family:"Helvetica Neue",Helvetica,"PingFang TC","Noto Sans TC",sans-serif;-webkit-font-smoothing:antialiased;font-size:12px;letter-spacing:.04em}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+
+/* nav：四個字平均散開 */
+nav.top{position:fixed;top:0;left:0;right:0;z-index:10;display:grid;grid-template-columns:repeat(4,1fr);padding:14px var(--pad);mix-blend-mode:difference;color:#fff;text-transform:uppercase}
+nav.top a:nth-child(2),nav.top a:nth-child(3){text-align:center}
+nav.top a:nth-child(4){text-align:right}
+nav.top a[aria-current]{text-decoration:underline;text-underline-offset:3px}
+
+/* 作品牆 */
+.wall{display:grid;grid-template-columns:repeat(24,1fr);column-gap:var(--gap);padding:9vw var(--pad) 12vw;align-items:start}
+.w{display:block;grid-column:var(--c)/span var(--s);grid-row:var(--r);margin-top:var(--t,0)}
+.w img{width:100%;height:auto;background:#f3f3f1;transition:opacity .35s}
+.w figcaption{display:flex;justify-content:space-between;gap:1em;padding-top:8px;opacity:0;transform:translateY(-3px);transition:opacity .3s,transform .3s}
+.w figcaption i{font-style:normal;color:var(--mute);white-space:nowrap}
+.wall.dim .w img{opacity:.35}
+.wall.dim .w.on img{opacity:1}
+.w.on figcaption,.w:focus-visible figcaption{opacity:1;transform:none}
+.filters{position:fixed;left:var(--pad);bottom:14px;z-index:9;display:flex;gap:14px;text-transform:uppercase;mix-blend-mode:difference;color:#fff}
+.filters button{all:unset;cursor:pointer;opacity:.5}
+.filters button[aria-pressed=true]{opacity:1;text-decoration:underline;text-underline-offset:3px}
+.empty{grid-column:2/span 12;color:var(--mute);font-size:13px;line-height:1.8}
+
+/* 關於 / 聯絡 */
+#info{display:grid;grid-template-columns:repeat(24,1fr);column-gap:var(--gap);padding:6vw var(--pad) 10vw;border-top:1px solid #eee;scroll-margin-top:40px}
+#info h2{grid-column:2/span 5;font-size:12px;font-weight:400;text-transform:uppercase;color:var(--mute)}
+#info .bio{grid-column:8/span 9;font-size:15px;line-height:1.8;letter-spacing:.02em}
+#info .bio p+p{margin-top:.8em;color:#555;font-size:13px}
+#info dl{grid-column:19/span 5;font-size:12px;line-height:2.1}
+#info dt{color:var(--mute);text-transform:uppercase}
+#info dd{margin-bottom:1.2em}
+.u{border-bottom:1px solid #ccc;transition:border-color .2s}
+.u:hover{border-color:var(--ink)}
+
+footer{padding:0 var(--pad) 3vh;color:var(--mute);text-transform:uppercase;display:flex;justify-content:space-between}
+
+/* 作品內頁 */
+.work-head{display:grid;grid-template-columns:repeat(24,1fr);column-gap:var(--gap);padding:9vw var(--pad) 4vw}
+.work-head h1{grid-column:2/span 10;font-size:clamp(22px,2.6vw,36px);font-weight:500;letter-spacing:-.01em;line-height:1.2}
+.work-head h1 small{display:block;font-size:12px;font-weight:400;color:var(--mute);letter-spacing:.04em;margin-top:8px;text-transform:uppercase}
+.work-head dl{grid-column:13/span 4;line-height:1.9}
+.work-head dt{color:var(--mute);text-transform:uppercase}
+.work-head dd{margin-bottom:.8em}
+.work-head .text{grid-column:18/span 6;font-size:13px;line-height:1.85;color:#333}
+.work-head .text p+p{margin-top:.8em}
+.shots{display:grid;grid-template-columns:repeat(24,1fr);column-gap:var(--gap);row-gap:6vw;padding:2vw var(--pad) 10vw;align-items:start}
+.shots figure{grid-column:var(--c,6)/span var(--s,14)}
+.shots figcaption{padding-top:8px;color:var(--mute)}
+.shots video,.shots iframe{width:100%;display:block;aspect-ratio:16/9;border:0;background:#000}
+.back{display:inline-block;margin:0 var(--pad) 4vh}
+
+@media (max-width:760px){
+  :root{--pad:16px}
+  nav.top{grid-template-columns:1fr 1fr;row-gap:4px;padding:12px 16px}
+  nav.top a:nth-child(2){text-align:right}
+  nav.top a:nth-child(3){text-align:left}
+  .wall{grid-template-columns:repeat(12,1fr);column-gap:0;padding:84px 16px 80px;row-gap:56px}
+  .w{grid-row:auto!important;margin-top:0!important;grid-column:var(--mc)/span var(--ms)}
+  .w figcaption{opacity:1;transform:none}
+  .wall.dim .w img{opacity:1}
+  .empty{grid-column:1/-1}
+  #info{grid-template-columns:1fr;row-gap:28px;padding:56px 16px 64px}
+  #info h2,#info .bio,#info dl{grid-column:1}
+  .work-head{grid-template-columns:1fr;row-gap:24px;padding:84px 16px 32px}
+  .work-head h1,.work-head dl,.work-head .text{grid-column:1}
+  .shots{grid-template-columns:1fr;row-gap:32px;padding:0 16px 64px}
+  .shots figure{grid-column:1!important}
+  .filters{bottom:12px}
+}
