@@ -22,6 +22,9 @@
 window.WORKS = [
 
   /* ---- 平面作品（標題、年份、說明之後再補）---- */
+  { slug: "collage-01", title: "拼貼 01", en: "Collage 01", year: "", type: "Graphic", tag: "拼貼",
+    cover: "works/collage-01/cover.jpg",
+    images: [ { src: "works/collage-01/cover.jpg", c: 7, s: 12 } ] },
   { slug: "ghost-ahbk", title: "AHBK", en: "Ghost", year: "", type: "Graphic", tag: "插畫",
     cover: "works/ghost-ahbk/cover.jpg",
     images: [ { src: "works/ghost-ahbk/cover.jpg", c: 7, s: 12 } ] },
