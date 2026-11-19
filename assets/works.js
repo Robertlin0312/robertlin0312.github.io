@@ -21,6 +21,17 @@
 
 window.WORKS = [
 
+  /* ---- 平面作品（標題、年份、說明之後再補）---- */
+  { slug: "spon-ct", title: "SPON CT", en: "", year: "", type: "Graphic", tag: "海報",
+    cover: "works/spon-ct/cover.jpg",
+    images: [ { src: "works/spon-ct/cover.jpg" } ] },
+  { slug: "w447", title: "447", en: "", year: "", type: "Graphic", tag: "平面",
+    cover: "works/w447/cover.jpg",
+    images: [ { src: "works/w447/cover.jpg", c: 3, s: 20 } ] },
+  { slug: "w222", title: "222", en: "", year: "", type: "Graphic", tag: "平面",
+    cover: "works/w222/cover.jpg",
+    images: [ { src: "works/w222/cover.jpg", c: 4, s: 18 } ] },
+
   /* ---- 範例（刪掉最前面的 // 就會出現）----
   {
     slug: "nuwa-2026", title: "女媧補天", en: "Nüwa Mends the Sky",
