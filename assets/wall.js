@@ -1,15 +1,25 @@
-/* 首頁作品牆：讀 works.js，依序排成整齊格線 */
+/* 首頁作品牆：讀 works.js，自動錯落排列 */
 (function(){
   var ROOT=document.body.dataset.root||'';
   var wall=document.querySelector('.wall'), bar=document.querySelector('.filters');
+  /* 錯落位置：一排兩件、一排三件交錯，依序循環。
+     c 起始欄（1–24）、s 寬度（幾欄）、t 往下錯開（vw）；mc/ms 是手機版（12 欄） */
+  var ROWS=[
+    [{c:2, s:8, t:0, mc:1,ms:10},{c:14,s:7,t:4, mc:4,ms:9}],
+    [{c:1, s:6, t:3, mc:1,ms:8},{c:9, s:6,t:0, mc:5,ms:8},{c:17,s:7,t:5, mc:1,ms:9}],
+    [{c:4, s:7, t:1, mc:3,ms:10},{c:15,s:8,t:0, mc:1,ms:10}],
+    [{c:2, s:5, t:0, mc:1,ms:9},{c:10,s:6,t:4, mc:4,ms:9},{c:18,s:6,t:1, mc:2,ms:8}]
+  ];
+  function slot(i){var n=0,r=0;for(;;){var row=ROWS[r%ROWS.length];if(i<n+row.length)return{p:row[i-n],row:r+1};n+=row.length;r++}}
   function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(m){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]})}
   function render(type){
     var list=WORKS.filter(function(w){return !type||w.type===type});
     if(!list.length){wall.innerHTML='<p class="empty">作品整理中。<br>Works coming soon.</p>';return}
     wall.innerHTML=list.map(function(w,i){
       var href=w.link?ROOT+w.link:ROOT+'work/?w='+encodeURIComponent(w.slug);
-      return '<a class="w" href="'+esc(href)+'">'+
-        '<figure><div class="frame"><img src="'+esc(ROOT+w.cover)+'" alt="'+esc(w.title+' '+(w.en||''))+'" loading="'+(i<8?'eager':'lazy')+'"></div>'+
+      var q=slot(i), p=q.p, row=q.row;
+      return '<a class="w" href="'+esc(href)+'" style="--c:'+p.c+';--s:'+p.s+';--r:'+row+';--t:'+p.t+'vw;--mc:'+p.mc+';--ms:'+p.ms+'">'+
+        '<figure><img src="'+esc(ROOT+w.cover)+'" alt="'+esc(w.title+' '+(w.en||''))+'" loading="'+(i<6?'eager':'lazy')+'">'+
         '<figcaption><span>'+esc(w.title)+(w.en?'　'+esc(w.en):'')+'</span><i>'+esc(w.tag||w.year||'')+'</i></figcaption></figure></a>';
     }).join('');
     bindHover();
