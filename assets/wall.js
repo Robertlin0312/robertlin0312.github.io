@@ -1,23 +1,15 @@
-/* 首頁作品牆：讀 works.js，自動錯落排列 */
+/* 首頁作品牆：讀 works.js，依序排成整齊格線 */
 (function(){
   var ROOT=document.body.dataset.root||'';
   var wall=document.querySelector('.wall'), bar=document.querySelector('.filters');
-  /* 錯落位置：兩件一排，依序循環。c 起始欄、s 寬度、t 往下錯開；mc/ms 是手機版 */
-  var P=[
-    {c:2, s:7, t:0,  mc:1,ms:10},{c:14,s:6,t:9, mc:5,ms:8},
-    {c:6, s:5, t:5, mc:1,ms:8}, {c:17,s:5,t:2, mc:6,ms:7},
-    {c:1, s:6, t:9, mc:1,ms:9}, {c:11,s:6,t:15,mc:4,ms:9},
-    {c:3, s:8, t:4, mc:1,ms:11},{c:15,s:8,t:11,mc:3,ms:10}
-  ];
   function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(m){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]})}
   function render(type){
     var list=WORKS.filter(function(w){return !type||w.type===type});
     if(!list.length){wall.innerHTML='<p class="empty">作品整理中。<br>Works coming soon.</p>';return}
     wall.innerHTML=list.map(function(w,i){
-      var p=P[i%P.length], row=Math.floor(i/2)+1;
       var href=w.link?ROOT+w.link:ROOT+'work/?w='+encodeURIComponent(w.slug);
-      return '<a class="w" href="'+esc(href)+'" style="--c:'+p.c+';--s:'+p.s+';--r:'+row+';--t:'+p.t+'vw;--mc:'+p.mc+';--ms:'+p.ms+'">'+
-        '<figure><img src="'+esc(ROOT+w.cover)+'" alt="'+esc(w.title+' '+(w.en||''))+'" loading="'+(i<4?'eager':'lazy')+'">'+
+      return '<a class="w" href="'+esc(href)+'">'+
+        '<figure><div class="frame"><img src="'+esc(ROOT+w.cover)+'" alt="'+esc(w.title+' '+(w.en||''))+'" loading="'+(i<8?'eager':'lazy')+'"></div>'+
         '<figcaption><span>'+esc(w.title)+(w.en?'　'+esc(w.en):'')+'</span><i>'+esc(w.tag||w.year||'')+'</i></figcaption></figure></a>';
     }).join('');
     bindHover();
