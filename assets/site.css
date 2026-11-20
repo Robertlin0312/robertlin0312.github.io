@@ -40,7 +40,9 @@ nav.top a[aria-current]{text-decoration:underline;text-underline-offset:3px}
 footer{padding:0 var(--pad) 3vh;color:var(--mute);text-transform:uppercase;display:flex;justify-content:space-between}
 
 /* 作品內頁 */
-.work-head{display:grid;grid-template-columns:repeat(24,1fr);column-gap:var(--gap);padding:9vw var(--pad) 4vw}
+.motif{height:18px;margin:64px var(--pad) 0;background:url(motif.svg) left center/auto 100% repeat-x}
+
+.work-head{display:grid;grid-template-columns:repeat(24,1fr);column-gap:var(--gap);padding:5vw var(--pad) 4vw}
 .work-head h1{grid-column:2/span 10;font-size:clamp(22px,2.6vw,36px);font-weight:500;letter-spacing:-.01em;line-height:1.2}
 .work-head h1 small{display:block;font-size:12px;font-weight:400;color:var(--mute);letter-spacing:.04em;margin-top:8px;text-transform:uppercase}
 .work-head dl{grid-column:13/span 4;line-height:1.9}
@@ -66,7 +68,8 @@ footer{padding:0 var(--pad) 3vh;color:var(--mute);text-transform:uppercase;displ
   .empty{grid-column:1/-1}
   #info{grid-template-columns:1fr;row-gap:28px;padding:56px 16px 64px}
   #info h2,#info .bio,#info dl{grid-column:1}
-  .work-head{grid-template-columns:1fr;row-gap:24px;padding:84px 16px 32px}
+  .motif{height:14px;margin:72px 16px 0}
+  .work-head{grid-template-columns:1fr;row-gap:24px;padding:28px 16px 32px}
   .work-head h1,.work-head dl,.work-head .text{grid-column:1}
   .shots{grid-template-columns:1fr;row-gap:32px;padding:0 16px 64px}
   .shots figure{grid-column:1!important}
