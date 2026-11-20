@@ -35,7 +35,8 @@
   var meta=[['Year',w.year],['Type',w.type],['Client',w.client],['Role',w.role]].filter(function(m){return m[1]});
   head.innerHTML='<h1>'+esc(w.title)+'<small>'+esc(w.en||'')+'</small></h1>'+
     '<dl>'+meta.map(function(m){return '<dt>'+m[0]+'</dt><dd>'+esc(m[1])+'</dd>'}).join('')+'</dl>'+
-    '<div class="text">'+(w.text||[]).map(function(t){return '<p>'+esc(t)+'</p>'}).join('')+'</div>';
+    '<div class="text">'+(w.text||[]).map(function(t){return '<p>'+esc(t)+'</p>'}).join('')+
+      (w.tool?'<a class="launch" href="'+esc(ROOT+w.tool)+'">開啟工具　Launch tool →</a>':'')+'</div>';
   var imgs=(w.images&&w.images.length)?w.images:[{src:w.cover}];
   shots.innerHTML=imgs.map(function(im){
     var st=(im.c?'--c:'+im.c+';':'')+(im.s?'--s:'+im.s:'');
