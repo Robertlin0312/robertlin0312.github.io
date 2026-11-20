@@ -69,12 +69,14 @@ window.WORKS = [
     cover: "roubert-tools/covers/slice-collage-lab.jpg", link: "roubert-tools/slice-collage-lab/" },
   { slug: "nie-kan-kan", title: "捏看看", en: "Face Warp", year: 2026, type: "Tools", tag: "變形",
     cover: "roubert-tools/covers/nie-kan-kan.jpg", link: "roubert-tools/nie-kan-kan/" },
-  { slug: "zhuo-zi", title: "灼字", en: "Burnt Glyph", year: 2026, type: "Tools", tag: "熱像 × 字形",
-    cover: "roubert-tools/covers/zhuo-zi.jpg", link: "roubert-tools/zhuo-zi/" },
+  // 暫時下架（還不成熟）：要放回來，把下面兩行開頭的 // 刪掉
+  // { slug: "zhuo-zi", title: "灼字", en: "Burnt Glyph", year: 2026, type: "Tools", tag: "熱像 × 字形",
+  //   cover: "roubert-tools/covers/zhuo-zi.jpg", link: "roubert-tools/zhuo-zi/" },
   { slug: "isolate", title: "線稿隔離器", en: "Isolate", year: 2026, type: "Tools", tag: "線稿",
     cover: "roubert-tools/covers/isolate.jpg", link: "roubert-tools/isolate/" },
   { slug: "zi-dao", title: "字島", en: "Glyph Island", year: 2026, type: "Tools", tag: "文字繞島",
     cover: "roubert-tools/covers/zi-dao.jpg", link: "roubert-tools/zi-dao/" },
-  { slug: "zi-wang", title: "字網", en: "Glyph Web", year: 2026, type: "Tools", tag: "字母連線",
-    cover: "roubert-tools/covers/zi-wang.jpg", link: "roubert-tools/zi-wang/" }
+  // 暫時下架（還不成熟）：要放回來，把下面兩行開頭的 // 刪掉
+  // { slug: "zi-wang", title: "字網", en: "Glyph Web", year: 2026, type: "Tools", tag: "字母連線",
+  //   cover: "roubert-tools/covers/zi-wang.jpg", link: "roubert-tools/zi-wang/" },
 ];
