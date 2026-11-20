@@ -17,12 +17,12 @@ nav.top a[aria-current]{text-decoration:underline;text-underline-offset:3px}
 /* 作品牆：錯落排列（24 欄，每件作品自己的起點、寬度、往下錯開） */
 .wall{display:grid;grid-template-columns:repeat(24,1fr);column-gap:var(--gap);row-gap:3.5vw;padding:24px var(--pad) 10vw;align-items:start}
 .w{display:block;grid-column:var(--c)/span var(--s);grid-row:var(--r);margin-top:var(--t,0)}
-.w img{width:100%;height:auto;transition:opacity .35s}
+.w img,.w video{display:block;width:100%;height:auto;transition:opacity .35s}
 .w figcaption{display:flex;justify-content:space-between;gap:1em;padding-top:8px;opacity:0;transform:translateY(-3px);transition:opacity .3s,transform .3s}
 .w figcaption i{font-style:normal;color:var(--mute);white-space:nowrap}
 .w.on figcaption,.w:focus-visible figcaption{opacity:1;transform:none}
-.wall.dim .w img{opacity:.35}
-.wall.dim .w.on img{opacity:1}
+.wall.dim .w img,.wall.dim .w video{opacity:.35}
+.wall.dim .w.on img,.wall.dim .w.on video{opacity:1}
 
 .filters{display:flex;gap:18px;text-transform:uppercase;padding:126px var(--pad) 0}
 .filters button{all:unset;cursor:pointer;color:var(--mute)}
@@ -57,7 +57,8 @@ footer{padding:0 var(--pad) 3vh;color:var(--mute);text-transform:uppercase;displ
 .shots{display:grid;grid-template-columns:repeat(24,1fr);column-gap:var(--gap);row-gap:6vw;padding:2vw var(--pad) 10vw;align-items:start}
 .shots figure{grid-column:var(--c,6)/span var(--s,14)}
 .shots figcaption{padding-top:8px;color:var(--mute)}
-.shots video,.shots iframe{width:100%;display:block;aspect-ratio:16/9;border:0;background:#000}
+.shots iframe{width:100%;display:block;aspect-ratio:16/9;border:0;background:#000}
+.shots video.loop{width:100%;height:auto;display:block}
 .back{display:inline-block;margin:0 var(--pad) 4vh}
 
 @media (max-width:760px){
@@ -69,7 +70,7 @@ footer{padding:0 var(--pad) 3vh;color:var(--mute);text-transform:uppercase;displ
   .wall{grid-template-columns:repeat(12,1fr);column-gap:0;padding:24px 16px 80px;row-gap:40px}
   .w{grid-row:auto!important;margin-top:0!important;grid-column:var(--mc)/span var(--ms)}
   .w figcaption{opacity:1;transform:none}
-  .wall.dim .w img{opacity:1}
+  .wall.dim .w img,.wall.dim .w video{opacity:1}
   .empty{grid-column:1/-1}
   #info{grid-template-columns:1fr;row-gap:28px;padding:56px 16px 64px}
   #info h2,#info .bio,#info dl{grid-column:1}

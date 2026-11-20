@@ -40,7 +40,8 @@
   var imgs=(w.images&&w.images.length)?w.images:[{src:w.cover}];
   shots.innerHTML=imgs.map(function(im){
     var st=(im.c?'--c:'+im.c+';':'')+(im.s?'--s:'+im.s:'');
-    var body=im.video?'<iframe src="'+esc(im.video)+'" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>'
+    var body=im.mp4?'<video class="loop" src="'+esc(ROOT+im.mp4)+'"'+(im.poster?' poster="'+esc(ROOT+im.poster)+'"':'')+' autoplay muted loop playsinline preload="auto"></video>'
+            :im.video?'<iframe src="'+esc(im.video)+'" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>'
                      :'<img src="'+esc(ROOT+im.src)+'" alt="'+esc(im.caption||w.title)+'" loading="lazy">';
     return '<figure style="'+st+'">'+body+(im.caption?'<figcaption>'+esc(im.caption)+'</figcaption>':'')+'</figure>';
   }).join('');

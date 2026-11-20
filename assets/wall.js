@@ -19,7 +19,9 @@
       var href=w.link?ROOT+w.link:ROOT+'work/?w='+encodeURIComponent(w.slug);
       var q=slot(i), p=q.p, row=q.row;
       return '<a class="w" href="'+esc(href)+'" style="--c:'+p.c+';--s:'+p.s+';--r:'+row+';--t:'+p.t+'vw;--mc:'+p.mc+';--ms:'+p.ms+'">'+
-        '<figure><img src="'+esc(ROOT+w.cover)+'" alt="'+esc(w.title+' '+(w.en||''))+'" loading="'+(i<6?'eager':'lazy')+'">'+
+        '<figure>'+(w.coverVideo
+          ?'<video src="'+esc(ROOT+w.coverVideo)+'" poster="'+esc(ROOT+w.cover)+'" autoplay muted loop playsinline preload="metadata" aria-label="'+esc(w.title)+'"></video>'
+          :'<img src="'+esc(ROOT+w.cover)+'" alt="'+esc(w.title+' '+(w.en||''))+'" loading="'+(i<6?'eager':'lazy')+'">')+
         '<figcaption><span>'+esc(w.title)+(w.en?'　'+esc(w.en):'')+'</span><i>'+esc(w.tag||w.year||'')+'</i></figcaption></figure></a>';
     }).join('');
     bindHover();
