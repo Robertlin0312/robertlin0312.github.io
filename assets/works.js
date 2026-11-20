@@ -20,14 +20,15 @@
            不設 c / s 就是置中大圖；video 欄位可放 YouTube／Vimeo 嵌入網址
            mp4 欄位放影片檔路徑：自動靜音循環播放（poster 是載入前顯示的圖）
    coverVideo（選填）首頁封面改成循環播放的影片（mp4 路徑）
+   scale   （選填）首頁封面縮放比例，例如 0.5 是一半大小
    ============================================================ */
 
 window.WORKS = [
 
   /* ---- 平面作品（標題、年份、說明之後再補）---- */
   { slug: "equal", title: "Approximately Equal", en: "", year: "", type: "Motion", tag: "動態",
-    cover: "works/equal/cover.jpg", coverVideo: "works/equal/equal.mp4",
-    images: [ { mp4: "works/equal/equal.mp4", poster: "works/equal/cover.jpg", c: 8, s: 10 } ] },
+    cover: "works/equal/cover.jpg", coverVideo: "works/equal/equal.mp4", scale: 0.5,
+    images: [ { mp4: "works/equal/equal.mp4", poster: "works/equal/cover.jpg", c: 10, s: 5 } ] },
   { slug: "collage-01", title: "拼貼 01", en: "Collage 01", year: "", type: "Graphic", tag: "拼貼",
     cover: "works/collage-01/cover.jpg",
     images: [
